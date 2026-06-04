@@ -1,0 +1,24 @@
+@startuml casi_uso
+
+left to right direction
+skinparam PackageStyle rectangle
+
+actor "Cliente" as Customer
+actor "Cucina" as Kitchen <<application>>
+actor "Sistema Bancario" as Bank <<external>>
+
+rectangle "Sistema Ristorazione Rapida" {
+    usecase "UC1: Inserimento Ordine" as UC1
+    usecase "UC2: Elaborazione pagamento" as UC2
+    usecase "Verifica disponibilità ingediente" as UC3
+}
+
+Customer --> UC1
+Customer --> UC2 
+
+UC1 ..> UC3 : <<include>>
+
+UC1 --> Kitchen : Invia comanda 
+UC2 -- Bank : Verifica transazione 
+
+@enduml

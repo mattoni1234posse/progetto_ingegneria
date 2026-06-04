@@ -1,0 +1,44 @@
+# --- JAVA & MAVEN ---
+# Esclude la cartella dei file compilati e dei pacchetti generati
+target/
+*.class
+*.jar
+*.war
+
+
+# --- IDE (VS Code, Eclipse, IntelliJ) ---
+# Esclude le impostazioni locali dell'editor che variano da PC a PC
+.vscode/
+.settings/
+.project
+.classpath
+bin/
+*.imm
+*.user
+
+
+# --- LATEX (Igiene della Relazione) ---
+# Escludiamo TUTTI i file temporanei di compilazione
+docs/*.aux
+docs/*.log
+docs/*.out
+docs/*.toc
+docs/*.synctex.gz
+docs/*.fdb_latexmk
+docs/*.fls
+docs/*.blg
+docs/*.bbl
+
+
+# NOTA: NON escludiamo i file .pdf per permettere al professore
+# di leggere la relazione direttamente su GitHub.
+
+
+# --- PLANTUML ---
+# Esclude le immagini generate automaticamente nella cartella out
+out/
+
+
+# --- SISTEMA OPERATIVO ---
+Thumbs.db
+.DS_Store
