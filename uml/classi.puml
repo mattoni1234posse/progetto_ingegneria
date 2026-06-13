@@ -1,0 +1,61 @@
+@startuml classi
+
+skinparam classAttributeIconSize 0
+skinparam monochrome true
+
+package "it.unipg.modello" {
+
+    class Prodotto {
+        - idProdotto : String
+        - nome : String
+        - prezzo : double
+        - disponibile : boolean
+        + Prodotto(idProdotto: String, nome: String, prezzo: double)
+        + getIdProdotto() : String
+        + getNome() : String
+        + getPrezzo() : double
+        + isDisponibile() : boolean
+        + setDisponibile(disponibile: boolean) : void
+        + toString() : String
+    }
+
+    class Ordine {
+        - idOrdine : String
+        - pagato : boolean
+        - prodottiSelezionati : List<Prodotto>
+        + Ordine(idOrdine: String)
+        + aggiungiProdotto(p: Prodotto) : void
+        + calcolaTotale() : double
+        + getIdOrdine() : String
+        + isPagato() : boolean
+        + setPagato(pagato: boolean) : void
+    }
+
+    class Menu {
+        - prodotti : List<Prodotto>
+        + Menu()
+        + aggiungiProdotto(prodotto: Prodotto) : void
+        + cercaProdotto(nome: String) : Optional<Prodotto>
+        + getTuttiIProdotti() : List<Prodotto>
+    }
+
+    class Cassa {
+        + inserisciProdottoInOrdine(ordine: Ordine, prodotto: Prodotto) : boolean
+        + elaboraPagamento(ordine: Ordine, budgetCliente: double) : boolean
+    }
+
+}
+
+' --- Relazioni tra le classi ---
+
+' Il Menu contiene molti Prodotti (Aggregazione)
+Menu o-- "*" Prodotto : "contiene >"
+
+' L'Ordine include molti Prodotti (Aggregazione)
+Ordine o-- "*" Prodotto : "include >"
+
+' La Cassa dipende da Ordine e Prodotto per eseguire i suoi metodi (Dipendenza d'uso)
+Cassa ..> Ordine : "gestisce"
+Cassa ..> Prodotto : "verifica"
+
+@enduml

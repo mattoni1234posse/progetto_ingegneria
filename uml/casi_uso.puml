@@ -10,7 +10,7 @@ actor "Sistema Bancario" as Bank <<external>>
 rectangle "Sistema Ristorazione Rapida" {
     usecase "UC1: Inserimento Ordine" as UC1
     usecase "UC2: Elaborazione pagamento" as UC2
-    usecase "Verifica disponibilità ingediente" as UC3
+    usecase "Verifica disponibilità ingrediente" as UC3
 }
 
 Customer --> UC1
